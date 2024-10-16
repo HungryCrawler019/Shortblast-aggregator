@@ -8,10 +8,17 @@ datasource db {
 }
 
 model Pools {
-  id       Int     @id @default(autoincrement())
-  address  String  @unique @db.VarChar(50)
-  name     String  @db.VarChar(50)
-  isClosed Boolean @default(false) @map("is_closed")
+  id            Int      @id @default(autoincrement())
+  address       String   @unique @db.VarChar(50)
+  token_mint    String   @unique @db.VarChar(50)
+  creator       String   @unique @db.VarChar(50)
+  total_supply  Int
+  reserve_token Int
+  reserve_sol   Int
+  bump          Int
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  isClosed      Boolean  @default(false) @map("is_closed")
 
   @@map("pools")
 }

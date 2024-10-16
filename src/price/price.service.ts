@@ -1,3 +1,4 @@
+import { SolanaProgram } from './../../type/solana_program';
 import { Injectable, Logger } from '@nestjs/common';
 import {
   AnchorProvider,
@@ -30,7 +31,7 @@ export class PriceService {
     setProvider(provider);
 
     //@ts-ignore
-    const program = new Program(idl, provider);
+    const program = new Program<SolanaProgram>(idl, provider);
     program.addEventListener('purchaseEvent', (event: any) => {
       console.log(event, {
         reserveSol: event.reserveSol.toString(),
